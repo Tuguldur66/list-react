@@ -31,6 +31,8 @@ export default function HomePage() {
     );
   };
 
+  const clearAll = () => setTodos([]);
+
   const filteredTodos = todos.filter((todo) => {
     if (filter === "Active") return !todo.checked;
     if (filter === "Completed") return todo.checked;
@@ -106,6 +108,17 @@ export default function HomePage() {
           <p className="text-center text-gray-500 text-sm">No task add one.</p>
         )}
       </div>
+
+      {todos.length > 0 && (
+        <div className="flex justify-end mt-4">
+          <button
+            onClick={clearAll}
+            className="px-4 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-600"
+          >
+            Clear All
+          </button>
+        </div>
+      )}
     </div>
   );
 }
